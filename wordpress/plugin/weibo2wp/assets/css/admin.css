@@ -1,0 +1,81 @@
+.wp-list-table .column-weibo-image, .wp-list-table .weibo-image-thumb {
+	padding: 5px 10px;
+}
+.wp-list-table .column-weibo-name, .wp-list-table .weibo-image-url, .wp-list-table .weibo-image-button {
+	padding: 10px;
+	vertical-align: middle;
+}
+
+/* Post edit option style */
+.weibo2wp_options_panel, .panel {
+    padding: 9px 9px 9px 9px;
+    color: #555;
+}
+.weibo2wp_options_panel p {
+    margin: 0 0 9px;
+    font-size: 12px;
+    padding: 5px 9px;
+    line-height: 24px;
+}
+.weibo2wp_options_panel p:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.weibo2wp_options_panel span {
+    float: left;
+    width: 150px;
+    padding: 0;
+}
+.weibo2wp_options_panel .image-title {
+	padding: 10px 0;
+	height: 25px;
+	line-height: 25px
+}
+.weibo2wp_options_panel .image-title button {
+    float: right;
+}
+.weibo2wp_options_panel .options_group {
+    border-top: 1px solid white;
+    border-bottom: 1px solid #dfdfdf;
+}
+.weibo2wp_options_panel .options_group:first-child {
+    border-top: 0;
+}
+.weibo2wp_options_panel .options_group:last-child {
+    border-bottom: 0;
+}
+
+/* Post edit image table style */
+.image-table td {
+	border-bottom: 1px dotted #ececec;
+}
+.wp-list-table .weibo-image-thumb {
+	width: 150px;
+}
+.wp-list-table .weibo-image-url {
+	text-align: left;
+}
+.wp-list-table .weibo-image-thumb img{
+	width: 80px;
+}
+.wp-list-table .weibo-image-url input{
+	width: 500px;
+}
+
+/* Common style */
+.clearfix:before,
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	zoom: 1; /* IE < 8 */
+}
