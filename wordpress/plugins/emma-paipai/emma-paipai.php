@@ -10,6 +10,15 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+function emmapaipai_favicon(){
+	$output = '<link rel="shortcut icon" type="image/x-icon" href="' . plugins_url( '/favicon.ico', __FILE__ ) . '">';
+	
+	if ( $output != '' )
+		echo stripslashes( $output ) . "\n";
+}
+add_action( 'wp_head','emmapaipai_favicon' );
+
+
 function emmapaipai_analytics(){
 	$output = "
 	<script>
