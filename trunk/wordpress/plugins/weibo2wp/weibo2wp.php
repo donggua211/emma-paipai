@@ -46,6 +46,9 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 			// Installation
 			register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		
+			/* Get saved auth list from DB */
+			$this->init_auth_list();
+			
 			// Hooks
 			add_action( 'init', array( $this, 'init' ), 0 );
 		}
@@ -79,9 +82,6 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		public function init() {
 			/* Set client_id and  client_secret */
 			$this->check_client();
-			
-			/* Get saved auth list from DB */
-			$this->init_auth_list();
 			
 			/* init session class */
 			$this->session = new Weibo2wp_Session_Handler();
