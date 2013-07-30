@@ -1,0 +1,264 @@
+/*
+Theme Name: emma-paipai.com
+Theme URI: http://www.emma-paipai.com
+Author: Yuan Zhao
+Author URI: http://wordpress.org/
+Description: A theme for emma-paipai.com.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: emma-paipai
+
+This theme is special developed for emma-paipai.com.
+-------------------------------------------------------------- */
+
+html {
+    font-size: 62.5%;
+    font-family: Tahoma,'Microsoft YaHei';
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, button, textarea, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+}
+body {
+    line-height: 1.333;
+    font-size: 12px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%}
+input, textarea, select, button {
+    font-size: 12px;
+    font-weight: normal;
+    font-family: inherit;
+}
+input[type="button"], input[type="submit"] {
+    cursor: pointer;
+}
+select, button {
+    cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+li {
+    list-style: none;
+}
+caption, th {
+    text-align: left;
+}
+q:before, q:after {
+    content: ''}
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+sup {
+    vertical-align: text-top;
+}
+sub {
+    vertical-align: text-bottom;
+}
+fieldset, img, a img, iframe {
+    border-width: 0;
+    border-style: none;
+}
+iframe {
+    overflow: hidden;
+}
+img {
+    -ms-interpolation-mode: bicubic;
+}
+textarea {
+    resize: vertical;
+    overflow-y: auto;
+}
+legend {
+    color: #000;
+}
+a {
+    text-decoration: none;
+	color: #EC5CA4;
+}
+a:hover {
+    text-decoration: underline;
+	color: #EC5CA4;
+}
+hr {
+    height: 0;
+}
+label {
+    cursor: pointer;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* Page Layouts*/
+.wrap {
+	background-attachment: scroll;
+	background-image: url(image/wrap-bg.jpg);
+	background-position: 50% 0%;
+	background-repeat: no-repeat no-repeat;
+	background-color:#faeada;
+	color: #545454;
+}
+.wrap-inner {
+	width: 1000px;
+	margin: 0 auto;
+	position: relative;
+	min-width: 1000px;
+	min-height: 1000px;
+}
+.container {
+	min-height: 1200px;
+	border-radius: 5px;
+	border-color: #FCD1DA;
+	width: 900px;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	padding: 15px 10px;
+}
+.site-content {
+	width: 620px;
+	float: left;
+	padding: 0 30px 15px 20px;
+
+}
+.widget-area {
+	width: 220px;
+	padding: 0 10px 10px 0;
+	float: right;
+
+}
+.site-footer {
+	clear: both;
+	text-align: center;
+	padding-top: 25px;
+	min-height: 75px;
+}
+
+
+/* Header */
+.header {
+	background-image: url(http://os.i.gtimg.cn/qzone/space_item/orig/13/87789_w.png);
+	height: 220px;
+	width: 900px;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	background-position: initial initial;
+	background-repeat: no-repeat no-repeat;
+
+}
+.header .site-info {
+	padding-top: 10px;
+}
+.header .site-title {
+	font-size: 24px;
+	font-weight: normal;
+	display: inline-block;
+}
+.header .site-description {
+	margin-top: 10px;
+}
+.header .site-navigation {
+	margin-top: 115px;
+	height: 32px;
+	font-weight: bold;
+	font-size: 14px;
+
+}
+.header .site-navigation li {
+	margin-right: 15px;
+	position: relative;
+	display: inline;
+}
+
+/* Sidebar */
+.widget-area .widget {
+	hyphens: auto;
+	word-wrap: break-word;
+}
+.widget-area .widget-title {
+	margin-bottom: 8px;
+}
+
+.widget-area .widget p,
+.widget-area .widget li,
+.widget-area .widget .textwidget {
+	font-size: 13px;
+	line-height: 1.846153846;
+}
+.widget-area .widget p {
+	margin-bottom: 24px;
+}
+.widget-area .textwidget ul {
+	list-style: disc outside;
+	margin: 0 0 24px;
+}
+.widget-area .textwidget li {
+	margin-left: 36px;
+}
+.widget-area #s {
+	width: 53.66666666666%; /* define a width to avoid dropping a wider submit button */
+}
+.widget-area hr {
+	margin: 19px auto 17px;
+	border-bottom: solid 1px #FCD1DA;
+	border-style: none none solid none;
+	border-width: 1px;
+	height: 0;
+}
+
+/* =Main content and comment content
+-------------------------------------------------------------- */
+.entry_wrap {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	padding-right: 25px;
+	min-height: 88px;
+	vertical-align: top;
+	border-bottom: 1px #FCD1DA solid;
+	word-wrap: break-word;
+}
+.entry_wrap:after {
+	content: ".";
+	overflow: hidden;
+	height: 0;
+	display: block;
+	clear: both;
+}
+.entry-header {
+	font-size: 16px;
+	line-height: 26px;
+	margin-bottom: 4px;
+}
+.entry-content {
+	font-size: 14px;
+	padding-bottom: 6px;
+	font-weight: normal;
+	line-height: 22px;
+}
+.entry-images {
+	padding: 8px;
+	line-height: 22px;
+	margin-bottom: 4px;
+	margin-top: 5px;
+	border: 1px solid #F5C2CE;
+	width: 550px;
+}
+.entry-meta {
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+
+
+
+
+.clearfix{zoom:1}
+.clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden}
