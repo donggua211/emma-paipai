@@ -40,13 +40,13 @@
 		$image_image = $image_image ? unserialize( $image_image ) : array();
 		
 		if( !empty( $image_weibo ) || !empty( $image_image ) )
-			echo '<div id="gallery" class="entry-images">';
+			echo '<div id="gallery" class="gallery entry-images">';
 		
 		foreach($image_weibo as $val)
-			echo '<a data-gallery="gallery" href="' . $val . '/2000"> <img src="' . $val . '/160"></a>';
+			echo '<a href="' . $val . '/2000" rel="prettyPhoto'.get_the_ID().'[pp_gal]" > <img src="' . $val . '/160" /></a>';
 		
 		foreach($image_image as $val)
-			echo '<a data-gallery="gallery" href="' . $val . '"> <img src="' . $val . '"></a>';
+			echo '<a href="' . $val . '" rel="prettyPhoto'.get_the_ID().'[pp_gal]" > <img src="' . $val . '" /></a>';
 		
 		if( !empty( $image_weibo ) || !empty( $image_image ) )
 			echo '</div><!-- .entry-images -->';
