@@ -98,6 +98,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
 }
 
+/* style for buttons */
+input[type="button"], input[type="submit"], button {
+	padding: 2px 8px;
+	border: solid 1px #FCD1DA;
+	background-color: #FFEFF5;
+	color: #545454;
+}
+
+
 /* Page Layouts*/
 .wrap {
 	background-attachment: scroll;
@@ -255,6 +264,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .entry-meta {
 	line-height: 22px;
 	margin-bottom: 5px;
+	color: #9B9B9B;
+}
+.entry-meta span{
+	margin-right: 5px;
 }
 
 
