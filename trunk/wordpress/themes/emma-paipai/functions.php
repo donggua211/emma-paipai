@@ -41,15 +41,15 @@ if ( ! isset( $content_width ) )
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_setup() {
+function emmapaipai_setup() {
 	/*
 	 * Makes Twenty Twelve available for translation.
 	 *
 	 * Translations can be added to the /languages/ directory.
 	 * If you're building a theme based on Twenty Twelve, use a find and replace
-	 * to change 'twentytwelve' to the name of your theme in all the template files.
+	 * to change 'emmapaipai' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'twentytwelve', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'emmapaipai', get_template_directory() . '/languages' );
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -61,7 +61,7 @@ function twentytwelve_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status' ) );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menu( 'primary', __( 'Primary Menu', 'twentytwelve' ) );
+	register_nav_menu( 'primary', __( 'Primary Menu', 'emmapaipai' ) );
 
 	/*
 	 * This theme supports custom background color and image, and here
@@ -75,7 +75,7 @@ function twentytwelve_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
 }
-add_action( 'after_setup_theme', 'twentytwelve_setup' );
+add_action( 'after_setup_theme', 'emmapaipai_setup' );
 
 /**
  * Adds support for a custom header image.
@@ -87,7 +87,7 @@ require( get_template_directory() . '/inc/custom-header.php' );
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_scripts_styles() {
+function emmapaipai_scripts_styles() {
 	global $wp_styles;
 
 	/*
@@ -100,11 +100,13 @@ function twentytwelve_scripts_styles() {
 	/*
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
-	wp_enqueue_script( 'twentytwelve-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
+	wp_enqueue_script( 'emmapaipai-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
 	
+	//jquery UI
+	wp_enqueue_script( 'jqueryui', get_template_directory_uri() . '/js/jquery-ui-1.10.3.min.js', array( 'jquery' ), '1.10.3', true );
 	
 	//Image gallery
-	wp_enqueue_script( 'image-gallery', get_template_directory_uri() . '/js/jquery.image-gallery.min.js', array( 'jquery-ui-widget', 'jquery-ui-dialog' ), '1.0', true );
+	wp_enqueue_script( 'image-gallery', get_template_directory_uri() . '/js/jquery.image-gallery.min.js', array( 'jqueryui' ), '1.0', true );
 	
 	//Main script
 	wp_enqueue_script( 'emma-paipai-main', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'image-gallery' ), '1.0', true );
@@ -117,19 +119,19 @@ function twentytwelve_scripts_styles() {
 	 *
 	 * To disable in a child theme, use wp_dequeue_style()
 	 * function mytheme_dequeue_fonts() {
-	 *     wp_dequeue_style( 'twentytwelve-fonts' );
+	 *     wp_dequeue_style( 'emmapaipai-fonts' );
 	 * }
 	 * add_action( 'wp_enqueue_scripts', 'mytheme_dequeue_fonts', 11 );
 	 */
 
 	/* translators: If there are characters in your language that are not supported
 	   by Open Sans, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'twentytwelve' ) ) {
+	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'emmapaipai' ) ) {
 		$subsets = 'latin,latin-ext';
 
 		/* translators: To add an additional Open Sans character subset specific to your language, translate
 		   this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate into your own language. */
-		$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)', 'twentytwelve' );
+		$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)', 'emmapaipai' );
 
 		if ( 'cyrillic' == $subset )
 			$subsets .= ',cyrillic,cyrillic-ext';
@@ -143,24 +145,27 @@ function twentytwelve_scripts_styles() {
 			'family' => 'Open+Sans:400italic,700italic,400,700',
 			'subset' => $subsets,
 		);
-		wp_enqueue_style( 'twentytwelve-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
+		wp_enqueue_style( 'emmapaipai-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 	}
 
 	/*
 	 * Loads our main stylesheet.
 	 */
-	wp_enqueue_style( 'twentytwelve-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'emmapaipai-style', get_stylesheet_uri() );
 
 	/*
 	 * Loads the Internet Explorer specific stylesheet.
 	 */
-	wp_enqueue_style( 'twentytwelve-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentytwelve-style' ), '20121010' );
-	$wp_styles->add_data( 'twentytwelve-ie', 'conditional', 'lt IE 9' );
+	wp_enqueue_style( 'emmapaipai-ie', get_template_directory_uri() . '/css/ie.css', array( 'emmapaipai-style' ), '20121010' );
+	$wp_styles->add_data( 'emmapaipai-ie', 'conditional', 'lt IE 9' );
 
+	//Jquery UI
+	wp_enqueue_style( 'jqueryui', get_template_directory_uri() . '/css/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.min.css', array(), '1.10.3' );
 	
-	wp_enqueue_style( 'image-gallery', get_template_directory_uri() . '/css/jquery.image-gallery.css', array(), '1.0' );
+	//Image Gallery
+	wp_enqueue_style( 'image-gallery', get_template_directory_uri() . '/css/jquery.image-gallery.css', array( 'jqueryui' ), '1.0' );
 }
-add_action( 'wp_enqueue_scripts', 'twentytwelve_scripts_styles' );
+add_action( 'wp_enqueue_scripts', 'emmapaipai_scripts_styles' );
 
 /**
  * Creates a nicely formatted and more specific title element text
@@ -172,7 +177,7 @@ add_action( 'wp_enqueue_scripts', 'twentytwelve_scripts_styles' );
  * @param string $sep Optional separator.
  * @return string Filtered title.
  */
-function twentytwelve_wp_title( $title, $sep ) {
+function emmapaipai_wp_title( $title, $sep ) {
 	global $paged, $page;
 
 	if ( is_feed() )
@@ -188,34 +193,34 @@ function twentytwelve_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentytwelve' ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'emmapaipai' ), max( $paged, $page ) );
 
 	return $title;
 }
-add_filter( 'wp_title', 'twentytwelve_wp_title', 10, 2 );
+add_filter( 'wp_title', 'emmapaipai_wp_title', 10, 2 );
 
 /**
  * Makes our wp_nav_menu() fallback -- wp_page_menu() -- show a home link.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_page_menu_args( $args ) {
+function emmapaipai_page_menu_args( $args ) {
 	if ( ! isset( $args['show_home'] ) )
 		$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'twentytwelve_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'emmapaipai_page_menu_args' );
 
 /**
  * Registers our main widget area and the front page widget areas.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_widgets_init() {
+function emmapaipai_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Main Sidebar', 'twentytwelve' ),
+		'name' => __( 'Main Sidebar', 'emmapaipai' ),
 		'id' => 'sidebar-1',
-		'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'twentytwelve' ),
+		'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'emmapaipai' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '<hr /></div>',
 		'before_title' => '<h3 class="widget-title">',
@@ -223,9 +228,9 @@ function twentytwelve_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => __( 'First Front Page Widget Area', 'twentytwelve' ),
+		'name' => __( 'First Front Page Widget Area', 'emmapaipai' ),
 		'id' => 'sidebar-2',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve' ),
+		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'emmapaipai' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '<hr /></div>',
 		'before_title' => '<h3 class="widget-title">',
@@ -233,50 +238,50 @@ function twentytwelve_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => __( 'Second Front Page Widget Area', 'twentytwelve' ),
+		'name' => __( 'Second Front Page Widget Area', 'emmapaipai' ),
 		'id' => 'sidebar-3',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve' ),
+		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'emmapaipai' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '<hr /></div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 }
-add_action( 'widgets_init', 'twentytwelve_widgets_init' );
+add_action( 'widgets_init', 'emmapaipai_widgets_init' );
 
-if ( ! function_exists( 'twentytwelve_content_nav' ) ) :
+if ( ! function_exists( 'emmapaipai_content_nav' ) ) :
 /**
  * Displays navigation to next/previous pages when applicable.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_content_nav( $html_id ) {
+function emmapaipai_content_nav( $html_id ) {
 	global $wp_query;
 
 	$html_id = esc_attr( $html_id );
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $html_id; ?>" class="navigation" role="navigation">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>
-			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentytwelve' ) ); ?></div>
-			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?></div>
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'emmapaipai' ); ?></h3>
+			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'emmapaipai' ) ); ?></div>
+			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'emmapaipai' ) ); ?></div>
 		</nav><!-- #<?php echo $html_id; ?> .navigation -->
 	<?php endif;
 }
 endif;
 
-if ( ! function_exists( 'twentytwelve_comment' ) ) :
+if ( ! function_exists( 'emmapaipai_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  *
  * To override this walker in a child theme without modifying the comments template
- * simply create your own twentytwelve_comment(), and that function will be used instead.
+ * simply create your own emmapaipai_comment(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_comment( $comment, $args, $depth ) {
+function emmapaipai_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -284,7 +289,7 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 		// Display trackbacks differently than normal comments.
 	?>
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<p><?php _e( 'Pingback:', 'twentytwelve' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php _e( 'Pingback:', 'emmapaipai' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'emmapaipai' ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -299,28 +304,28 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 					printf( '<cite class="fn">%1$s %2$s</cite>',
 						get_comment_author_link(),
 						// If current post author is also comment author, make it known visually.
-						( $comment->user_id === $post->post_author ) ? '<span> ' . __( 'Post author', 'twentytwelve' ) . '</span>' : ''
+						( $comment->user_id === $post->post_author ) ? '<span> ' . __( 'Post author', 'emmapaipai' ) . '</span>' : ''
 					);
 					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 						esc_url( get_comment_link( $comment->comment_ID ) ),
 						get_comment_time( 'c' ),
 						/* translators: 1: date, 2: time */
-						sprintf( __( '%1$s at %2$s', 'twentytwelve' ), get_comment_date(), get_comment_time() )
+						sprintf( __( '%1$s at %2$s', 'emmapaipai' ), get_comment_date(), get_comment_time() )
 					);
 				?>
 			</header><!-- .comment-meta -->
 
 			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentytwelve' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'emmapaipai' ); ?></p>
 			<?php endif; ?>
 
 			<section class="comment-content comment">
 				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', 'twentytwelve' ), '<p class="edit-link">', '</p>' ); ?>
+				<?php edit_comment_link( __( 'Edit', 'emmapaipai' ), '<p class="edit-link">', '</p>' ); ?>
 			</section><!-- .comment-content -->
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'twentytwelve' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'emmapaipai' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 	<?php
@@ -329,20 +334,20 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 }
 endif;
 
-if ( ! function_exists( 'twentytwelve_entry_meta' ) ) :
+if ( ! function_exists( 'emmapaipai_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
  *
- * Create your own twentytwelve_entry_meta() to override in a child theme.
+ * Create your own emmapaipai_entry_meta() to override in a child theme.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_entry_meta() {
+function emmapaipai_entry_meta() {
 	// Translators: used between list items, there is a space after the comma.
-	$categories_list = get_the_category_list( __( ', ', 'twentytwelve' ) );
+	$categories_list = get_the_category_list( __( ', ', 'emmapaipai' ) );
 
 	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentytwelve' ) );
+	$tag_list = get_the_tag_list( '', __( ', ', 'emmapaipai' ) );
 
 	$date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
 		esc_url( get_permalink() ),
@@ -353,17 +358,17 @@ function twentytwelve_entry_meta() {
 
 	$author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( __( 'View all posts by %s', 'twentytwelve' ), get_the_author() ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'emmapaipai' ), get_the_author() ) ),
 		get_the_author()
 	);
 
 	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
 	if ( $tag_list ) {
-		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'emmapaipai' );
 	} elseif ( $categories_list ) {
-		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'emmapaipai' );
 	} else {
-		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'emmapaipai' );
 	}
 
 	printf(
@@ -391,7 +396,7 @@ endif;
  * @param array Existing class values.
  * @return array Filtered class values.
  */
-function twentytwelve_body_class( $classes ) {
+function emmapaipai_body_class( $classes ) {
 	$background_color = get_background_color();
 
 	if ( ! is_active_sidebar( 'sidebar-1' ) || is_page_template( 'page-templates/full-width.php' ) )
@@ -411,7 +416,7 @@ function twentytwelve_body_class( $classes ) {
 		$classes[] = 'custom-background-white';
 
 	// Enable custom font class only if the font CSS is queued to load.
-	if ( wp_style_is( 'twentytwelve-fonts', 'queue' ) )
+	if ( wp_style_is( 'emmapaipai-fonts', 'queue' ) )
 		$classes[] = 'custom-font-enabled';
 
 	if ( ! is_multi_author() )
@@ -419,7 +424,7 @@ function twentytwelve_body_class( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'twentytwelve_body_class' );
+add_filter( 'body_class', 'emmapaipai_body_class' );
 
 /**
  * Adjusts content_width value for full-width and single image attachment
@@ -427,13 +432,13 @@ add_filter( 'body_class', 'twentytwelve_body_class' );
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_content_width() {
+function emmapaipai_content_width() {
 	if ( is_page_template( 'page-templates/full-width.php' ) || is_attachment() || ! is_active_sidebar( 'sidebar-1' ) ) {
 		global $content_width;
 		$content_width = 960;
 	}
 }
-add_action( 'template_redirect', 'twentytwelve_content_width' );
+add_action( 'template_redirect', 'emmapaipai_content_width' );
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
@@ -443,18 +448,18 @@ add_action( 'template_redirect', 'twentytwelve_content_width' );
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  * @return void
  */
-function twentytwelve_customize_register( $wp_customize ) {
+function emmapaipai_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 }
-add_action( 'customize_register', 'twentytwelve_customize_register' );
+add_action( 'customize_register', 'emmapaipai_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_customize_preview_js() {
-	wp_enqueue_script( 'twentytwelve-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
+function emmapaipai_customize_preview_js() {
+	wp_enqueue_script( 'emmapaipai-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
 }
-add_action( 'customize_preview_init', 'twentytwelve_customize_preview_js' );
+add_action( 'customize_preview_init', 'emmapaipai_customize_preview_js' );

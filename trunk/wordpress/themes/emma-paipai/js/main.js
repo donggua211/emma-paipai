@@ -2,7 +2,7 @@
 
     // Initialize the Image Gallery widget:
     $('.entry-images').imagegallery({
-		modal: true
+		modal: false
 	});
 
 	
