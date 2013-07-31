@@ -302,6 +302,7 @@ class Weibo2wp_Weibo
 			$new_author = array(
             	'user_login' => $author_name,
             	'user_nicename' => $data['name'],
+            	'display_name' => $data['nick'],
             	'user_pass'  => '000000',
             );
 
