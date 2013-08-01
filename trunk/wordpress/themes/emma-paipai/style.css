@@ -243,7 +243,7 @@ input[type="button"], input[type="submit"], button {
 
 /* =Main content and comment content
 -------------------------------------------------------------- */
-.entry_wrap {
+.entry-wrap {
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 	padding-right: 25px;
@@ -252,7 +252,7 @@ input[type="button"], input[type="submit"], button {
 	border-bottom: 1px #FCD1DA solid;
 	word-wrap: break-word;
 }
-.entry_wrap:after {
+.entry-wrap:after {
 	content: ".";
 	overflow: hidden;
 	height: 0;
@@ -287,8 +287,65 @@ input[type="button"], input[type="submit"], button {
 	margin-right: 5px;
 }
 
+/* Single Post */
+.post-wrap {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	padding-right: 25px;
+	min-height: 88px;
+	vertical-align: top;
+	word-wrap: break-word;
+}
+.post-wrap:after {
+	content: ".";
+	overflow: hidden;
+	height: 0;
+	display: block;
+	clear: both;
+}
+.post-header {
+	font-size: 16px;
+	line-height: 26px;
+	margin-bottom: 4px;
+}
+.post-content {
+	font-size: 14px;
+	padding-bottom: 6px;
+	font-weight: normal;
+	line-height: 26px;
+}
+.post-author {
+	float: left;
+	padding-right: 5px;
+	font-size: 16px;
+}
+.post-images {
+	padding: 8px;
+	line-height: 22px;
+	margin-bottom: 4px;
+	margin-top: 5px;
+	width: 550px;
+}
+.post-images img{
+	max-width: 550px;
+}
+.post-meta {
+	line-height: 22px;
+	margin-bottom: 5px;
+	color: #9B9B9B;
+}
+.post-meta span{
+	margin-right: 5px;
+}
 
 
+/* weibo emotion style */
+.weibo_emotion{
+	vertical-align: top;
+}
+a .weibo_emotion{
+	vertical-align: bottom;
+}
 
 .clearfix{zoom:1}
 .clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden}

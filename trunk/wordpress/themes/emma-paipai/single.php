@@ -14,7 +14,12 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', get_post_format() ); ?>
+				<?php 
+				if ( is_weibo() )
+					get_template_part( 'single-content', 'weibo' );
+				else
+					get_template_part( 'single-content', get_post_format() ); 
+				?>
 
 				<nav class="nav-single">
 					<h3 class="assistive-text"><?php _e( 'Post navigation', 'emmapaipai' ); ?></h3>
