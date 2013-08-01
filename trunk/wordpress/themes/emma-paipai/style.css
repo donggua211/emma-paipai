@@ -223,6 +223,23 @@ input[type="button"], input[type="submit"], button {
 	border-width: 1px;
 	height: 0;
 }
+#wp-calendar {
+	margin: 0;
+	width: 100%;
+	font-size: 13px;
+	font-size: 0.928571429rem;
+}
+#wp-calendar th,
+#wp-calendar td,
+#wp-calendar caption {
+	text-align: left;
+	line-height: 1.8em;
+}
+#wp-calendar #next {
+	padding-right: 24px;
+	text-align: right;
+}
+
 
 /* =Main content and comment content
 -------------------------------------------------------------- */

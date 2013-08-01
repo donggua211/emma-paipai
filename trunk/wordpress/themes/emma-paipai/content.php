@@ -18,9 +18,9 @@
 				$weibo_id 	= get_post_meta( get_the_ID(), '_weibo_id', true );
 				if ( empty( $weibo_id ) ) :
 				?>
-					<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'emmapaipai' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+					<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 				<?php else : ?>
-					<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'emmapaipai' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_author(); ?></a>
+					<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_author(); ?></a>
 				<?php endif; // empty( $weibo_id ) ?>
 			<?php endif; // is_single() ?>
 		</div><!-- .entry-header -->
