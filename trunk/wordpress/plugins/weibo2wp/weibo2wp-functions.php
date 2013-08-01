@@ -83,3 +83,11 @@ function weibo2wp_auth_response()
 }
 
 add_action( 'init', 'weibo2wp_auth_response' );
+
+
+function is_weibo()
+{
+	$weibo_id = get_post_meta( get_the_ID(), '_weibo_id', true );
+	
+	return $weibo_id ? true : false;
+}
