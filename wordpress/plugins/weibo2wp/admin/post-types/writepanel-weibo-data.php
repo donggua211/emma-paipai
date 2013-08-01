@@ -15,8 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function weibo2wp_meta_boxes() {
 	global $post;
 
-	//Only add m
-	add_meta_box( 'weibo2wp-image', __( 'Weibo Informations', 'odsea' ), 'weibo2wp_image_box', 'post', 'normal', 'high' );
+	//Only show meta box if it is a weibo
+	if( is_weibo() )
+		add_meta_box( 'weibo2wp-image', __( 'Weibo Informations', 'odsea' ), 'weibo2wp_image_box', 'post', 'normal', 'high' );
 }
 
 add_action( 'add_meta_boxes', 'weibo2wp_meta_boxes' );
