@@ -140,7 +140,7 @@ input[type="button"], input[type="submit"], button {
 }
 .widget-area {
 	width: 220px;
-	padding: 0 10px 10px 0;
+	padding: 10px 10px 10px 0;
 	float: right;
 
 }
@@ -200,7 +200,7 @@ input[type="button"], input[type="submit"], button {
 .widget-area .widget p,
 .widget-area .widget li,
 .widget-area .widget .textwidget {
-	font-size: 13px;
+	font-size: 12px;
 	line-height: 1.846153846;
 }
 .widget-area .widget p {
@@ -214,7 +214,11 @@ input[type="button"], input[type="submit"], button {
 	margin-left: 36px;
 }
 .widget-area #s {
-	width: 53.66666666666%; /* define a width to avoid dropping a wider submit button */
+	width: 70%;
+}
+.screen-reader-text {
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
 }
 .widget-area hr {
 	margin: 19px auto 17px;
@@ -222,6 +226,13 @@ input[type="button"], input[type="submit"], button {
 	border-style: none none solid none;
 	border-width: 1px;
 	height: 0;
+}
+#searchform div{
+	height: 20px;
+	line-height: 20px;
+}
+#searchsubmit{
+	float: right;
 }
 #wp-calendar {
 	margin: 0;
@@ -290,11 +301,13 @@ input[type="button"], input[type="submit"], button {
 /* Single Post */
 .post-wrap {
 	margin-bottom: 15px;
+	padding-top: 15px;
 	padding-bottom: 15px;
 	padding-right: 25px;
 	min-height: 88px;
 	vertical-align: top;
 	word-wrap: break-word;
+	border-bottom: 1px dashed #FCD1DA;
 }
 .post-wrap:after {
 	content: ".";
@@ -304,15 +317,51 @@ input[type="button"], input[type="submit"], button {
 	clear: both;
 }
 .post-header {
-	font-size: 16px;
 	line-height: 26px;
-	margin-bottom: 4px;
+	margin: 5px 0;
+}
+.post-title strong {
+	font-size: 26px;
+	margin-right: 20px;
+	position: relative;
+	font-family: 'Helvetica Neue','Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft Yahei',tahoma;
+}
+.post-toolbar {
+	float: left;
+	padding: 5px 0;
+	height: 22px;
+	line-height: 22px;
+	color: #9B9B9B;
+}
+.post-sub-title {
+	margin: 5px 0;
+}
+.post-toolbar li {
+	float: left;
+	padding: 2px 0;
+}
+.post-toolbar li a {
+	display: inline-block;
+	cursor: pointer;
+}
+.post-nav-single {
+	float: right;
+	margin-top: 6px;
+	max-width: 300px;
+	overflow: hidden;
+	height: 22px;
+	line-height: 22px;
 }
 .post-content {
+	clear: both;
 	font-size: 14px;
 	padding-bottom: 6px;
 	font-weight: normal;
 	line-height: 26px;
+}
+.post-content p {
+	margin: 10px 0;
+	line-height: 24px;
 }
 .post-author {
 	float: left;
@@ -321,7 +370,6 @@ input[type="button"], input[type="submit"], button {
 }
 .post-images {
 	padding: 8px;
-	line-height: 22px;
 	margin-bottom: 4px;
 	margin-top: 5px;
 	width: 550px;
@@ -329,15 +377,143 @@ input[type="button"], input[type="submit"], button {
 .post-images img{
 	max-width: 550px;
 }
-.post-meta {
-	line-height: 22px;
-	margin-bottom: 5px;
+
+/* Comments */
+.comments-area {
+	font-size: 14px;
+}
+.comments-title {
+	padding-left: 5px;
+	margin-bottom: 10px;
+	line-height: 1.5;
+	font-weight: normal;
+	border-left: 3px solid #FCD1DA;
+	border-bottom: 1px solid #FCD1DA;
+}
+.comment-wrap {
+	padding: 20px 0;
+	border-bottom: 1px solid #FCD1DA;
+}
+.user-info {
+	float: left;
+	margin-right: 10px;
+	width: 50px;
+	text-align: center;
+}
+.comment-body{
+	float: right;
+	width: 560px;
+}
+.user-info .avatar {
+	vertical-align: top;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.user-info .username {
+	margin: 10px 0;
+	font-weight: 700;
+}
+.user-info .date {
+	vertical-align: top;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.comment-info .author{
+	float: left;
+	padding-right: 7px;
+	font-size: 14px;
+	font-weight: 700;
+}
+.comment-info .title{
+	margin-bottom: 10px;;
+}
+.comment-info .time{
 	color: #9B9B9B;
 }
-.post-meta span{
-	margin-right: 5px;
+.child-comment-wrap .time{
+	font-size: 12px;
+}
+.comment-reply {
+	float: right;
+}
+.child-comment-wrap {
+	padding: 5px 0;
+	border-bottom: 1px dashed #FCD1DA;
 }
 
+.commentlist .pingback {
+	line-height: 1.714285714;
+	margin-bottom: 24px;
+}
+.commentlist .children {
+	margin-left: 30px;
+}
+.commentlist .child-comment-wrap {
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+/* Comment form */
+#respond {
+	margin-top: 10px;
+}
+#respond h3#reply-title {
+	font-size: 16px;
+	font-size: 1.142857143rem;
+	line-height: 1.5;
+}
+#respond h3#reply-title #cancel-comment-reply-link {
+	margin-left: 10px;
+	margin-left: 0.714285714rem;
+	font-weight: normal;
+	font-size: 12px;
+	font-size: 0.857142857rem;
+}
+#respond form {
+	margin: 24px 0;
+	margin: 1.714285714rem 0;
+}
+#respond form p {
+	margin: 11px 0;
+	margin: 0.785714286rem 0;
+}
+#respond form p.logged-in-as {
+	margin-bottom: 24px;
+	margin-bottom: 1.714285714rem;
+}
+#respond form label {
+	display: block;
+	line-height: 1.714285714;
+}
+#respond form input[type="text"],
+#respond form textarea {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 12px;
+	font-size: 0.857142857rem;
+	line-height: 1.714285714;
+	padding: 2px 5px;
+	width: 100%;
+}
+#respond form p.form-allowed-tags {
+	margin: 0;
+	font-size: 12px;
+	font-size: 0.857142857rem;
+	line-height: 2;
+	color: #5e5e5e;
+}
+#respond .form-submit{
+	text-align: right;
+}
+#respond .form-submit input[type="submit"]{
+	padding: 5px 20px;
+}
+.required {
+	color: red;
+}
 
 /* weibo emotion style */
 .weibo_emotion{
@@ -346,6 +522,19 @@ input[type="button"], input[type="submit"], button {
 a .weibo_emotion{
 	vertical-align: bottom;
 }
+.read-more {
+	float: right;
+	margin-right:5px;
+}
+.sep{
+	padding: 0 10px;
+	color: #F5C2CE;
+}
+.last .sep {
+	display: none;
+}
+
+
 
 .clearfix{zoom:1}
 .clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden}

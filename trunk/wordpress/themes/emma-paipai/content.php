@@ -20,7 +20,7 @@
 
 		
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'emmapaipai' ) ); ?>
+			<?php echo utf8_substr( get_the_content(), 300, '...<a href="'.get_permalink().'" title="阅读全文" class="read-more">阅读全文</a>' ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'emmapaipai' ), 'after' => '</div>' ) ); ?>
 		
 		</div><!-- .entry-content -->

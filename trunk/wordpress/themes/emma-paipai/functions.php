@@ -296,40 +296,83 @@ function emmapaipai_comment( $comment, $args, $depth ) {
 		default :
 		// Proceed with normal comments.
 		global $post;
+		
+		if( $depth == 1 ):
 	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<header class="comment-meta comment-author vcard">
-				<?php
-					echo get_avatar( $comment, 44 );
-					printf( '<cite class="fn">%1$s %2$s</cite>',
-						get_comment_author_link(),
-						// If current post author is also comment author, make it known visually.
-						( $comment->user_id === $post->post_author ) ? '<span> ' . __( 'Post author', 'emmapaipai' ) . '</span>' : ''
-					);
-					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
-						esc_url( get_comment_link( $comment->comment_ID ) ),
-						get_comment_time( 'c' ),
-						/* translators: 1: date, 2: time */
-						sprintf( __( '%1$s at %2$s', 'emmapaipai' ), get_comment_date(), get_comment_time() )
-					);
-				?>
-			</header><!-- .comment-meta -->
+		<li id="li-comment-<?php comment_ID(); ?>">
+			<div id="comment-<?php comment_ID(); ?>" class="comment-wrap clearfix">
+				<div class="user-info">
+					<?php echo get_avatar( $comment, 44 ); ?>
+						
+					<p class="username"><?php comment_author(); ?></p>
+				</div><!-- .comment-meta -->
 
-			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'emmapaipai' ); ?></p>
-			<?php endif; ?>
+				<div class="comment-body">
+					<div class="clearfix">
+						<div class="comment-reply">
+							<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '回复', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+							<?php edit_comment_link( '编辑', '<span class="sep">|</span>' ); ?>
+						</div>
+						
+						<div class="comment-info">
+							<div class="title">
+								<span class="time">评论时间: <?php comment_date();comment_time(); ?></span>
+							</div>
+							
+							<?php comment_text(); ?>
+						</div>
+					</div>
+					
+		<?php
+		else:
+		?>
+		<li id="li-comment-<?php comment_ID(); ?>">
+			<div id="comment-<?php comment_ID(); ?>" class="child-comment-wrap clearfix">
+				<div class="user-info">
+					<?php echo get_avatar( $comment, 44 ); ?>
+				</div><!-- .comment-meta -->
 
-			<section class="comment-content comment">
-				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', 'emmapaipai' ), '<p class="edit-link">', '</p>' ); ?>
-			</section><!-- .comment-content -->
+				<div class="comment-reply">
+					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '回复', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+					<?php edit_comment_link( '编辑', '<span class="sep">|</span>' ); ?>
+				</div>
+				
+				<div class="comment-info">
+					<span class="author"><?php comment_author(); ?>: </span>
+					<?php comment_text(); ?>
+					<span class="time">评论时间: <?php comment_date();comment_time(); ?></span>
+				</div>
+			</div>
+		<?php
+		endif;
+		break;
+	endswitch; // end comment_type check
+}
 
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'emmapaipai' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
-		</article><!-- #comment-## -->
+function emmapaipai_comment_end( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+		case 'trackback' :
+	?>
+		</li>
 	<?php
+			break;
+		default :
+		// Proceed with normal comments.
+		global $post;
+		
+		if( $depth == 0 ):
+		?>
+				</div>
+			</div>
+		</li>
+		<?php
+		else:
+		?>
+		</li>
+		<?php
+		endif;
 		break;
 	endswitch; // end comment_type check
 }
@@ -464,3 +507,33 @@ function emmapaipai_customize_preview_js() {
 	wp_enqueue_script( 'emmapaipai-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
 }
 add_action( 'customize_preview_init', 'emmapaipai_customize_preview_js' );
+
+
+//Helper functions
+if ( ! function_exists( 'utf8_substr' ) ) {
+
+	/**
+	 * cut a string in UTF-8 formate.
+	 *
+	 * @access public
+	 * @param string $string
+	 * @param int $length The length of length you want to cut
+	 */
+	function utf8_substr($string, $length, $more = '...') 
+	{
+	
+		$wordscut = '';
+		$j = 0;
+        preg_match_all("/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|\xe0[\xa0-\xbf][\x80-\xbf]|[\xe1-\xef][\x80-\xbf][\x80-\xbf]|\xf0[\x90-\xbf][\x80-\xbf][\x80-\xbf]|[\xf1-\xf7][\x80-\xbf][\x80-\xbf][\x80-\xbf]/", $string, $info);
+        for($i=0; $i<count($info[0]); $i++) 
+		{
+                $wordscut .= $info[0][$i];
+                $j = ord($info[0][$i]) > 127 ? $j + 2 : $j + 1;
+                if ($j > $length - 3) 
+				{
+                        return $wordscut.$more;
+                }
+        }
+        return join('', $info[0]);
+	}
+}
