@@ -12,7 +12,7 @@ jQuery(document).ready( function($) {
 	
 	$('button.remove_row').on('click',function() {
 		var parent = $(this).parent().parent();
-		parent.effect( "fade", {}, 200, function() {$(this).remove()} );
+		parent.find('.image-url').effect( "highlight", {color : '#FF8247' }, 500, function() {parent.remove()} );
 	});
 	
 	$('button.add_row').on('click',function() {
@@ -36,7 +36,7 @@ jQuery(document).ready( function($) {
 		
 		$('#weibo2wp_image_' + type + '_list :last-child .weibo-image-button button').on('click',function() {
 			var parent = $(this).parent().parent();
-			parent.effect( "fade", {}, 200, function() {$(this).remove()} );
+			parent.find('.image-url').effect( "highlight", {color : '#FF8247' }, 500, function() {parent.remove()} );
 		});
 		$('#weibo2wp_image_' + type + '_list :last-child .weibo-image-url input').change(function() {
 			var img_name = $(this).attr('name');
