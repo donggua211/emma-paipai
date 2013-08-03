@@ -108,8 +108,10 @@ function emmapaipai_scripts_styles() {
 	//Image gallery
 	wp_enqueue_script( 'image-gallery', get_template_directory_uri() . '/js/jquery.prettyPhoto.js', array( 'jqueryui' ), '1.0', true );
 	
+	wp_enqueue_script( 'ad-gallery', get_template_directory_uri() . '/js/jquery.ad-gallery.min.js', array( 'jqueryui' ), '1.2.7', false );
+	
 	//Main script
-	wp_enqueue_script( 'emma-paipai-main', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'image-gallery' ), '1.0', true );
+	wp_enqueue_script( 'emma-paipai-main', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'image-gallery', 'ad-gallery' ), '1.0', true );
 	
 	/*
 	 * Loads our special font CSS file.
@@ -164,6 +166,8 @@ function emmapaipai_scripts_styles() {
 	
 	//Image Gallery
 	wp_enqueue_style( 'image-gallery', get_template_directory_uri() . '/css/prettyPhoto.css', array( 'jqueryui' ), '1.0' );
+	
+	wp_enqueue_style( 'ad-gallery', get_template_directory_uri() . '/css/ad-gallery/jquery.ad-gallery.css', array( 'jqueryui' ), '1.0' );
 	
 }
 add_action( 'wp_enqueue_scripts', 'emmapaipai_scripts_styles' );
