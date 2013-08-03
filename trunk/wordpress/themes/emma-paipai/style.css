@@ -132,11 +132,13 @@ input[type="button"], input[type="submit"], button {
 	background-color: #FFFFFF;
 	padding: 15px 10px;
 }
+.site-content-full {
+	padding: 0 30px 15px 20px;
+}
 .site-content {
 	width: 620px;
 	float: left;
 	padding: 0 30px 15px 20px;
-
 }
 .widget-area {
 	width: 220px;
@@ -377,6 +379,38 @@ input[type="button"], input[type="submit"], button {
 .post-images img{
 	max-width: 550px;
 }
+
+/* Comments */
+.entry-gallery {
+	float: left;
+	width: 151px;
+	height: 210px;
+	margin: 0 19px 0 0;
+}
+.gallery-thumbnail {
+	position: relative;
+	z-index: 2;
+	height: 145px;
+	width: 145px;
+	border: 1px solid #DADADA;
+}
+.thumbnail-image {
+	width: 135px;
+	height: 135px;
+	margin: 5px;
+	font-size: 0;
+	line-height: 0;
+}
+.thumbnail-image a {
+	display: block;
+	width: 135px;
+	height: 135px;
+	overflow: hidden;
+}
+
+
+
+
 
 /* Comments */
 .comments-area {
