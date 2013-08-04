@@ -108,10 +108,8 @@ function emmapaipai_scripts_styles() {
 	//Image gallery
 	wp_enqueue_script( 'image-gallery', get_template_directory_uri() . '/js/jquery.prettyPhoto.js', array( 'jqueryui' ), '1.0', true );
 	
-	wp_enqueue_script( 'ad-gallery', get_template_directory_uri() . '/js/jquery.ad-gallery.min.js', array( 'jqueryui' ), '1.2.7', false );
-	
 	//Main script
-	wp_enqueue_script( 'emma-paipai-main', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'image-gallery', 'ad-gallery' ), '1.0', true );
+	wp_enqueue_script( 'emma-paipai-main', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'image-gallery' ), '1.0', true );
 	
 	/*
 	 * Loads our special font CSS file.
@@ -151,24 +149,21 @@ function emmapaipai_scripts_styles() {
 	}
 
 	/*
-	 * Loads our main stylesheet.
-	 */
-	wp_enqueue_style( 'emmapaipai-style', get_stylesheet_uri() );
-
-	/*
 	 * Loads the Internet Explorer specific stylesheet.
 	 */
 	wp_enqueue_style( 'emmapaipai-ie', get_template_directory_uri() . '/css/ie.css', array( 'emmapaipai-style' ), '20121010' );
 	$wp_styles->add_data( 'emmapaipai-ie', 'conditional', 'lt IE 9' );
 
 	//Jquery UI
-	wp_enqueue_style( 'jqueryui', get_template_directory_uri() . '/css/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.min.css', array(), '1.10.3' );
+	wp_enqueue_style( 'jqueryui', get_template_directory_uri() . '/css/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.min.css', array());
 	
 	//Image Gallery
-	wp_enqueue_style( 'image-gallery', get_template_directory_uri() . '/css/prettyPhoto.css', array( 'jqueryui' ), '1.0' );
+	wp_enqueue_style( 'image-gallery', get_template_directory_uri() . '/css/prettyPhoto.css', array( 'jqueryui' ));
 	
-	wp_enqueue_style( 'ad-gallery', get_template_directory_uri() . '/css/ad-gallery/jquery.ad-gallery.css', array( 'jqueryui' ), '1.0' );
-	
+	/*
+	 * Loads our main stylesheet.
+	 */
+	wp_enqueue_style( 'emmapaipai-style', get_stylesheet_uri(), array( 'ad-gallery', 'image-gallery') );
 }
 add_action( 'wp_enqueue_scripts', 'emmapaipai_scripts_styles' );
 

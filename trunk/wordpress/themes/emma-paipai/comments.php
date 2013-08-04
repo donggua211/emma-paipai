@@ -21,7 +21,7 @@ if ( post_password_required() )
 	return;
 ?>
 
-<div class="comments-area">
+<div id="comments" class="comments-area">
 
 	<?php // You can start editing here -- including this comment! ?>
 
