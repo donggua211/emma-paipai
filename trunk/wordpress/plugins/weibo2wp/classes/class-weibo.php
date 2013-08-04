@@ -349,10 +349,10 @@ class Weibo2wp_Weibo
 		}
 		
 		//add category
-		$term_exists = term_exists( 'Weibo of ' . $data['name'], 'category' );
+		$term_exists = term_exists( $data['nick'] . '的微博', 'category' );
 		$term_id = is_array( $term_exists ) ? $term_exists['term_id'] : $term_exists;
 		if ( ! $term_id ) {
-			$t = wp_insert_term( 'Weibo of ' . $data['name'], 'category' );
+			$t = wp_insert_term( $data['nick'] . '的微博', 'category' );
 			if ( ! is_wp_error( $t ) )
 			{
 				$term_id = $t['term_id'];
