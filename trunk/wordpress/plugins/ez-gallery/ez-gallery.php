@@ -109,11 +109,22 @@ if ( ! class_exists( 'EZ_Gallery' ) ) {
 			
 			if ( ! is_admin() || defined('DOING_AJAX') )
 			{
+				add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+				
 				add_filter( 'template_include', array( $this, 'template_loader' ) );
 			}
 			$this->init_taxonomy();
 		}
 
+		public function frontend_scripts() {
+			global $post;
+
+			wp_enqueue_script( 'ad-gallery', $this->plugin_url() . '/assets/js/jquery.ad-gallery.min.js', array( 'jquery' ), '1.2.7', false );
+			
+			// CSS Styles
+			wp_enqueue_style( 'ad-gallery', $this->plugin_url() . '/assets/css/front/jquery.ad-gallery.css');
+		}
+		
 		/**
 		 * Load a template.
 		 *
