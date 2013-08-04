@@ -120,7 +120,11 @@ if ( ! class_exists( 'EZ_Gallery' ) ) {
 			global $post;
 
 			wp_enqueue_script( 'ad-gallery', $this->plugin_url() . '/assets/js/jquery.ad-gallery.js', array( 'jquery' ), '1.2.7', false );
-			
+			$ad_gallery_params = array(
+				'plugin_url' => $this->plugin_url(),
+			 );
+
+			wp_localize_script( 'ad-gallery', 'ad_gallery_params', $ad_gallery_params );
 			// CSS Styles
 			wp_enqueue_style( 'ad-gallery', $this->plugin_url() . '/assets/css/front/jquery.ad-gallery.css');
 		}
