@@ -133,12 +133,12 @@ input[type="button"], input[type="submit"], button {
 	padding: 15px 10px;
 }
 .site-content-full {
-	padding: 0 30px 15px 20px;
+	padding: 15px 20px;
 }
 .site-content {
 	width: 620px;
 	float: left;
-	padding: 0 30px 15px 20px;
+	padding: 15px 30px 15px 20px;
 }
 .widget-area {
 	width: 220px;
@@ -189,6 +189,12 @@ input[type="button"], input[type="submit"], button {
 	position: relative;
 	display: inline;
 }
+
+/* breadcrumb */
+.breadcrumb {
+	padding: 5px 0 5px 20px;
+}
+
 
 /* Sidebar */
 .widget-area .widget {
@@ -303,7 +309,6 @@ input[type="button"], input[type="submit"], button {
 /* Single Post */
 .post-wrap {
 	margin-bottom: 15px;
-	padding-top: 15px;
 	padding-bottom: 15px;
 	padding-right: 25px;
 	min-height: 88px;
@@ -408,8 +413,16 @@ input[type="button"], input[type="submit"], button {
 	overflow: hidden;
 }
 
-
-
+.entry-gallery-wrap {
+	margin: 0 auto;
+	border: 1px solid #FCD1DA;
+}
+.ad-gallery .ad-back, .ad-gallery .ad-forward {
+	top: -8px;
+}
+.ad-next {
+cursor: url(image/next.cur),auto;
+}
 
 
 /* Comments */

@@ -46,3 +46,5 @@
 		</div><!-- .header -->
 
 		<div class="container clearfix">
+		
+		<?php get_template_part( 'breadcrumb' ); ?>

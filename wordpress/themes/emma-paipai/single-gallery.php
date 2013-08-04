@@ -13,24 +13,15 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<div id="post-<?php the_ID(); ?>" <?php post_class('post-wrap'); ?>>
-				<div class="post-header">
-					<div class="post-title">
-						<strong><span><?php the_title(); ?></span></strong>
-					</div>
-				</div><!-- .post-header -->
-				
-				<?php get_template_part( 'single-content-toolbar' ); ?>
-				
+			<div id="post-<?php the_ID(); ?>" <?php post_class('entry-gallery-wrap'); ?>>
 				<?php
 				$images = get_post_meta( get_the_ID(), '_images', true );
 				$images = $images ? unserialize( $images ) : array();
 
 				if( !empty( $images ) ) :
 				?>
-				 <div id="gallery" class="ad-gallery">
+				 <div id="gallery" class="ad-gallery" style="margin-left: 30px;">
 					<div class="ad-image-wrapper"></div>
-					<div class="ad-controls"></div>
 					<div class="ad-nav">
 						<div class="ad-thumbs">
 							<ul class="ad-thumb-list">
