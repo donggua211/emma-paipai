@@ -31,7 +31,7 @@ get_header(); ?>
 								echo '
 								<li>
 									<a href="'.$val['url'].'">
-										<img src="'.$val['url'].'" width="60px">
+										<img src="'.$val['url'].'" style="max-height: 40px; max-width: 60px;">
 									</a>
 								</li>';
 							}
