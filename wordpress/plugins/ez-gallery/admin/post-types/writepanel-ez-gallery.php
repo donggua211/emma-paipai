@@ -36,37 +36,39 @@ function ez_gallery_image_box() {
 			<div class="image-title clearfix">
 				<button type="button" class="add_row button"><?php _e( 'Add New Image', 'ez_gallery' ); ?></button>
 			</div>
-			<table class="wp-list-table widefat image-table" cellspacing="0">
-				<tbody id="ez_gallery_image_list">
-					<?php if( !empty( $images ) ):?>
-						<?php foreach($images as $val):?>
-						<tr>
-							<td class="image-thumb">
-								<img src="<?php echo $val['url'] ; ?>">
-							</td>
-							<td class="image-url">
-								<?php _e( 'Image URL', 'ez_gallery' ); ?>: <input type="text" name="images[]" value="<?php echo $val['url']; ?>">
-							</td>
-							<td class="image-button">
-								<button type="button" class="remove_row button"><?php _e( 'Remove', 'ez_gallery' ); ?></button>
-							</td>
-						</tr>
-						<?php endforeach; ?>
-					<?php else: ?>
-						<tr>
-							<td class="image-thumb">
-								<img src="">
-							</td>
-							<td class="image-url">
-								<?php _e( 'Image URL', 'ez_gallery' ); ?>: <input type="text" name="images[]" value="">
-							</td>
-							<td class="image-button">
-								<button type="button" class="remove_row button"><?php _e( 'Remove', 'ez_gallery' ); ?></button>
-							</td>
-						</tr>
-					<?php endif; ?>
-				</tbody>
-			</table>
+			<div class="ez-gallery-image-wrap">
+				<table class="wp-list-table widefat image-table" cellspacing="0">
+					<tbody id="ez_gallery_image_list">
+						<?php if( !empty( $images ) ):?>
+							<?php foreach($images as $val):?>
+							<tr>
+								<td class="image-thumb">
+									<img src="<?php echo $val['url'] ; ?>">
+								</td>
+								<td class="image-url">
+									<?php _e( 'Image URL', 'ez_gallery' ); ?>: <input type="text" name="images[]" value="<?php echo $val['url']; ?>">
+								</td>
+								<td class="image-button">
+									<button type="button" class="remove_row button"><?php _e( 'Remove', 'ez_gallery' ); ?></button>
+								</td>
+							</tr>
+							<?php endforeach; ?>
+						<?php else: ?>
+							<tr>
+								<td class="image-thumb">
+									<img src="">
+								</td>
+								<td class="image-url">
+									<?php _e( 'Image URL', 'ez_gallery' ); ?>: <input type="text" name="images[]" value="">
+								</td>
+								<td class="image-button">
+									<button type="button" class="remove_row button"><?php _e( 'Remove', 'ez_gallery' ); ?></button>
+								</td>
+							</tr>
+						<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		
 		<div class="clear"></div>

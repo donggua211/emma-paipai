@@ -11,6 +11,10 @@
     padding: 9px 9px 9px 9px;
     color: #555;
 }
+.ez-gallery-image-wrap {
+	height: 500px;
+	overflow: auto;
+}
 .ez_gallery_options_panel p {
     margin: 0 0 9px;
     font-size: 12px;

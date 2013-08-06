@@ -56,7 +56,9 @@ function ez_gallery_meta_boxes_save( $post_id, $post ) {
 	if ( empty( $_POST['ez_gallery_meta_nonce'] ) || ! wp_verify_nonce( $_POST['ez_gallery_meta_nonce'], 'ez_gallery_save_data' ) ) return;
 	if ( !current_user_can( 'edit_post', $post_id )) return;
 
-	$images = isset( $_POST['images'] ) ? $_POST['images'] : array();
+	set_time_limit(0);
+	
+	$images = isset( $_POST['images'] ) ? array_unique( $_POST['images'] ) : array();
 	
 	$images_result = array();
 	if( !empty( $images ) )
