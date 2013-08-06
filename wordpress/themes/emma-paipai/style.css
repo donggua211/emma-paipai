@@ -415,6 +415,7 @@ input[type="button"], input[type="submit"], button {
 
 .entry-gallery-wrap {
 	margin: 0 auto;
+	padding-bottom: 30px;
 	border: 1px solid #FCD1DA;
 }
 .ad-gallery .ad-back, .ad-gallery .ad-forward {
