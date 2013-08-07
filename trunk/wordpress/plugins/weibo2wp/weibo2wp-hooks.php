@@ -8,4 +8,4 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @see odsea_cancel_order()
  * @see odsea_order_again()
  */
-add_action( 'weibo2wp_synch_dailly', 'weibo2wp_synch_dailly' );
+add_action( 'weibo2wp_synch_dailly_hook', 'weibo2wp_synch_dailly' );

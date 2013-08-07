@@ -9,8 +9,10 @@ function get_weibo( $openid )
 function weibo2wp_synch_dailly() {
 	global $weibo2wp;
 	
+	set_time_limit(0);
+
 	$auth_list = $weibo2wp->get_auth_list();
-	
+
 	if( empty( $auth_list ) )
 		return false;
 	
