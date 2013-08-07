@@ -32,6 +32,11 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		/* @var string */
 		public $plugin_url;
 	
+		/**
+		 * @var string
+		 */
+		public $plugin_path;
+		
 		/* message array */
 		public $errors = array();
 		public $messages = array();
@@ -64,11 +69,13 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 			include_once( 'classes/tencent-sdk2.1.1/class-common.php' );
 
 			include_once( 'classes/class-weibo.php' );						//Weibo Class handle interaction with Tencent Weibo
+			include_once( 'classes/class-logger.php' );						//Weibo Class handle interaction with Tencent Weibo
 			include_once( 'classes/session/abstract-weibo2wp-session.php' ); 		// Abstract for session implementations
 			include_once( 'classes/session/class-weibo2wp-session-handler.php' );   // Odsea Session class
 		
 			include_once( 'weibo2wp-core-functions.php' );					//Core function
-			include_once( 'weibo2wp-functions.php' );						//Hooks function
+			include_once( 'weibo2wp-functions.php' );					//Core function
+			include_once( 'weibo2wp-hooks.php' );						//Hooks function
 		}
 
 		public function admin_includes() {
@@ -102,8 +109,8 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		
 		public function activate()
 		{
-			wp_clear_scheduled_hook( 'weibo2wp_synch_dailly' );
-			wp_schedule_event( time(), 'daily', 'weibo2wp_synch_dailly' );
+			wp_clear_scheduled_hook( 'weibo2wp_synch_dailly_hook' );
+			wp_schedule_event( time(), 'hourly', 'weibo2wp_synch_dailly_hook' );
 		
 		}
 		
@@ -125,6 +132,9 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 			return $this->auth_list;
 		}
 		
+		public function logger() {
+			return new Weibo2wp_Logger();
+		}
 		
 		function save_auth_list()
 		{
@@ -348,6 +358,18 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		public function plugin_url() {
 			if ( $this->plugin_url ) return $this->plugin_url;
 			return $this->plugin_url = untrailingslashit( plugins_url( '/', __FILE__ ) );
+		}
+		
+		/**
+		 * Get the plugin path.
+		 *
+		 * @access public
+		 * @return string
+		 */
+		public function plugin_path() {
+			if ( $this->plugin_path ) return $this->plugin_path;
+
+			return $this->plugin_path = untrailingslashit( plugin_dir_path( __FILE__ ) );
 		}
 	}
 
