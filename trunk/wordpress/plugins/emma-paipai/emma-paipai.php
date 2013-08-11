@@ -36,3 +36,27 @@ function emmapaipai_analytics(){
 		echo stripslashes( $output ) . "\n";
 }
 add_action( 'wp_footer','emmapaipai_analytics' );
+
+
+//Fix for Char set for Rewrite Roll
+function emmapaipai_request($query_vars)
+{
+	if( isset( $query_vars['ez_gallery'] ) )
+	{
+		$query_vars['ez_gallery'] = mb_convert_encoding($query_vars['ez_gallery'], 'UTF-8', 'GBK');
+	}
+	
+	if( isset( $query_vars['name'] ) )
+	{
+		$query_vars['name'] = mb_convert_encoding($query_vars['name'], 'UTF-8', 'GBK');
+	}
+	
+	return $query_vars;
+}
+add_filter( 'request','emmapaipai_request' );
+
+
+
+
+
+
