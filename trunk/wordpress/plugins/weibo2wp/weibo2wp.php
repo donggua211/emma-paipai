@@ -4,7 +4,7 @@
  * Plugin URI: http://www.emma-paipai.com/plugin/weibo2wp/
  * Description: The goal of this plugin is to help people Synchronize their Weibo( which is a very popular light blog in China) to WP.
  * Author: Yuan Zhao
- * Version: 1.1
+ * Version: 1.2
  * Author URI: http://www.emma-paipai.com/donggua211/
  */
 

@@ -2,7 +2,7 @@
 Contributors: Yuan Zhao
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 tags: weibo, QQ, weibo to wordpress
@@ -21,6 +21,9 @@ The goal of this plugin is to help people Synchronize their Weibo( which is a ve
 Not yet.
 
 == Changelog ==
+= 1.2 =
+* Fix some bugs
+
 = 1.1 =
 * Fix cron bug.
 * add logger class, for test purpose.
