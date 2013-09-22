@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class EMMAPI_Widget_LINKS extends WP_Widget {
+class DONGGUA_Widget_LINKS extends WP_Widget {
 
 	/**
 	 * constructor
@@ -21,12 +21,12 @@ class EMMAPI_Widget_LINKS extends WP_Widget {
 	 * @access public
 	 * @return void
 	 */
-	function EMMAPI_Widget_LINKS() {
+	function DONGGUA_Widget_LINKS() {
 		/* Widget settings. */
-		$widget_ops = array( 'classname' => 'emma-paipai widget_links', 'description' => 'Show links at site!' );
+		$widget_ops = array( 'classname' => 'donggua211 widget_links', 'description' => 'Show links at site!' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'emmapi_links', 'Links', $widget_ops );
+		$this->WP_Widget( 'donggua211_links', 'Links', $widget_ops );
 	}
 
 
@@ -50,7 +50,7 @@ class EMMAPI_Widget_LINKS extends WP_Widget {
 		if ($title) echo $before_title . $title . $after_title;
 
 		echo '<ul>';
-		foreach(emmapaipai_get_links() as $url_title => $url)
+		foreach(donggua211_get_links() as $url_title => $url)
 		{
 			echo '<li><a href="'.$url.'" target="_blank">'.$url_title.'</a>';
 		}
