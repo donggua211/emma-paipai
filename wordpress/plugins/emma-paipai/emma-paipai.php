@@ -55,8 +55,23 @@ function emmapaipai_request($query_vars)
 }
 add_filter( 'request','emmapaipai_request' );
 
+function register_widgets()
+{
+	include_once( 'class-widget-links.php' );
+	
+	register_widget( 'EMMAPI_Widget_LINKS' );
+}
 
+add_action( 'widgets_init', 'register_widgets' );
 
-
+function emmapaipai_get_links()
+{
+	return array(
+		'Emma-paipai&#39; Home' =>'http://www.emma-paipai.com/',
+		'Donggua211&#39; Home' =>'http://donggua211.emma-paipai.com/',
+	
+	
+	);
+}
 
 
