@@ -503,6 +503,18 @@ cursor: url(image/next.cur),auto;
 	padding-bottom: 10px;
 }
 
+/**
+ * Post/Paging Navigation
+ * ----------------------------------------------------------------------------
+ */
+.navigation .nav-previous {
+	float: left;
+}
+
+.navigation .nav-next {
+	float: right;
+}
+
 
 /* Comment form */
 #respond {
