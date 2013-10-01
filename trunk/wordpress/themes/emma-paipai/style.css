@@ -507,12 +507,40 @@ cursor: url(image/next.cur),auto;
  * Post/Paging Navigation
  * ----------------------------------------------------------------------------
  */
-.navigation .nav-previous {
-	float: left;
+nav.navigation {
+    text-align: center;
 }
-
-.navigation .nav-next {
-	float: right;
+nav.navigation ul {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0;
+    clear: both;
+    border: 1px solid #e0dadf;
+    border-right: 0;
+    margin: 1px;
+}
+nav.navigation ul li {
+    border-right: 1px solid #e0dadf;
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: inline;
+    overflow: hidden;
+}
+nav.navigation ul li a, nav.navigation ul li span {
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+    line-height: 1em;
+    font-size: 1em;
+    font-weight: normal;
+    padding: .5em;
+    min-width: 1em;
+    display: block;
+}
+nav.navigation ul li span.current, nav.navigation ul li a:hover, nav.navigation ul li a:focus {
+    background: #f7f6f7;
+    color: #998896;
 }
 
 

@@ -262,8 +262,19 @@ function emmapaipai_content_nav( $html_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $html_id; ?>" class="navigation" role="navigation">
-			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'emmapaipai' ) ); ?></div>
-			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'emmapaipai' ) ); ?></div>
+			<?php
+				echo paginate_links( array(
+					'base' 			=> str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
+					'format' 		=> '',
+					'current' 		=> max( 1, get_query_var('paged') ),
+					'total' 		=> $wp_query->max_num_pages,
+					'prev_text' 	=> '&larr;',
+					'next_text' 	=> '&rarr;',
+					'type'			=> 'list',
+					'end_size'		=> 3,
+					'mid_size'		=> 3
+				) );
+			?>
 		</nav><!-- #<?php echo $html_id; ?> .navigation -->
 	<?php endif;
 }
