@@ -51,6 +51,11 @@ function emmapaipai_request($query_vars)
 		$query_vars['name'] = mb_convert_encoding($query_vars['name'], 'UTF-8', 'GBK');
 	}
 	
+	if( isset( $query_vars['category_name'] ) )
+	{
+		$query_vars['category_name'] = mb_convert_encoding($query_vars['category_name'], 'UTF-8', 'GBK');
+	}
+	
 	return $query_vars;
 }
 add_filter( 'request','emmapaipai_request' );
