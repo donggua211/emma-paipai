@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Weibo to Wordpress
- * Plugin URI: http://www.emma-paipai.com/plugin/weibo2wp/
+ * Plugin URI: http://donggua211.emma-paipai.com/index.php/weibo2wp/
  * Description: The goal of this plugin is to help people Synchronize their Weibo( which is a very popular light blog in China) to WP.
  * Author: Yuan Zhao
- * Version: 1.2
- * Author URI: http://www.emma-paipai.com/donggua211/
+ * Version: 1.2.1
+ * Author URI: http://donggua211.emma-paipai.com/
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
