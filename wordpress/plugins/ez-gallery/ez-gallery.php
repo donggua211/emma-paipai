@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: EZ_Gallery
- * Plugin URI: http://www.emma-paipai.com/plugin/ez_gallery
+ * Plugin URI: http://donggua211.emma-paipai.com/index.php/ezgallery
  * Description: An Easy gallery.
  * Version: 1.0
  * Author: Yuan Zhao
- * Author URI: http://www.emma-paipai.com/donggua211/
+ * Author URI: http://donggua211.emma-paipai.com/
  * Requires at least: 3.0
- * Tested up to: 3.6
+ * Tested up to: 3.6.1
  *
  * @package ez_gallery
  * @category Core
