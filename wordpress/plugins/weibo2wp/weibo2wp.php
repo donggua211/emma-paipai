@@ -4,7 +4,7 @@
  * Plugin URI: http://donggua211.emma-paipai.com/index.php/weibo2wp/
  * Description: The goal of this plugin is to help people Synchronize their Weibo( which is a very popular light blog in China) to WP.
  * Author: Yuan Zhao
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author URI: http://donggua211.emma-paipai.com/
  */
 
@@ -20,8 +20,8 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		public $version = '1.0';
 		
 		/* Tencent Weibo APP Key, Do not change value unless you know what are you doing */
-		public $client_id = '801386946';
-		public $client_secret = '8ffa00306c5ddf31de7d9a637ba7126a';
+		public $client_id = '100571157';
+		public $client_secret = '32f1d83290cda40cd6d9b07500e61c64';
 	
 		/* session Class var */
 		public $session = NULL;
