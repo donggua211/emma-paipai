@@ -92,12 +92,13 @@ if ( ! function_exists( 'weibo2wp_settings' ) ) {
 			</table>
 		<?php
 		}
-		
-		$qc = new QC();
-		$url = $qc->qq_login();
+			
+		$callback = site_url();//回调url
+		$oauth = new OAuth();
+		$url = $oauth->getAuthorizeURL($callback);
 		?>
 	
-			<form method="post" id="mainform" action="<?php echo $url; ?>">
+			<form method="post" id="mainform" action="<?php echo $url; ?>" enctype="multipart/form-data">
 				<p class="submit">
 						<input name="save" class="button-primary" type="submit" value="<?php _e( 'authorization new weibo', 'weibo2wp' ); ?>" />
 				</p>
