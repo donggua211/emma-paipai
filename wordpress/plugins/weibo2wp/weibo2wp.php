@@ -20,9 +20,9 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		public $version = '1.0';
 		
 		/* Tencent Weibo APP Key, Do not change value unless you know what are you doing */
-		public $client_id = '100571157';
-		public $client_secret = '32f1d83290cda40cd6d9b07500e61c64';
-		
+		public $client_id = '801386946';
+		public $client_secret = '8ffa00306c5ddf31de7d9a637ba7126a';
+	
 		/* session Class var */
 		public $session = NULL;
 		
@@ -65,10 +65,8 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 				$this->ajax_includes();
 
 			//Include Tencent API files
-			include_once( 'classes/connect2.1-api/ErrorCase.class.php' );
-			include_once( 'classes/connect2.1-api/Oauth.class.php' );
-			include_once( 'classes/connect2.1-api/URL.class.php' );
-			include_once( 'classes/connect2.1-api/QC.class.php' );
+			include_once( 'classes/tencent-sdk2.1.1/class-oauth.php' );
+			include_once( 'classes/tencent-sdk2.1.1/class-common.php' );
 
 			include_once( 'classes/class-weibo.php' );						//Weibo Class handle interaction with Tencent Weibo
 			include_once( 'classes/class-logger.php' );						//Weibo Class handle interaction with Tencent Weibo
