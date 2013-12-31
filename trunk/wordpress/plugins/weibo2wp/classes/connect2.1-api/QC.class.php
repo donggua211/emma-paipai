@@ -199,7 +199,7 @@ class QC extends Oauth{
                 $this->error->showError("api调用参数错误",$str."必填一个");
             }
         }
-
+		
         if($method == "POST"){
             if($baseUrl == "https://graph.qq.com/blog/add_one_blog") $response = $this->urlUtils->post($baseUrl, $keysArr, 1);
             else $response = $this->urlUtils->post($baseUrl, $keysArr, 0);
@@ -272,8 +272,9 @@ class QC extends Oauth{
      * @since 5.0
      * @return string 返加access_token
      */
-    public function get_access_token(){
-        return $this->recorder->read("access_token");
+    public function set_keysArr($access_token, $openid){
+		$this->keysArr['access_token'] = $access_token;
+		$this->keysArr['openid'] = $openid;
     }
 
     //简单实现json到php数组转换功能

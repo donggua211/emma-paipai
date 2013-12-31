@@ -12,18 +12,12 @@ function weibo2wp_auth_response()
 	{
 		global $weibo2wp;
 		
-		$callback = site_url();
-		
 		$code 		= $_GET['code'];
-		$openid 	= $_GET['openid'];
-		$openkey	= $_GET['openkey'];
 		
 		//获取授权token
-		$oauth = new OAuth();
-		$url = $oauth->getAccessToken($code, $callback);
-		$r = Http::request($url);
-		parse_str($r, $out);
-
+		$qc = new QC();
+		$out = $qc->qq_callback();
+		
 		//存储授权数据
 		if ( isset( $out['access_token'] ) && !empty( $out['access_token'] ) )
 		{
@@ -36,15 +30,15 @@ function weibo2wp_auth_response()
 			$_SESSION['t_openkey'] = $openkey;
 			*/
 			
+			$openid = $qc->get_openid($out['access_token']);
+			
 			$auth_info['access_token'] = $out['access_token'];
 			$auth_info['refresh_token'] = $out['refresh_token'];
 			$auth_info['expires_in'] = $out['expires_in'];
-			$auth_info['code'] = $code;
 			$auth_info['openid'] = $openid;
-			$auth_info['openkey'] = $openkey;
 			$auth_info['name'] = '';
 			$auth_info['head'] = '';
-
+			
 			$weibo = get_weibo( $openid );
 			
 			if ( $weibo->exist($openid))
@@ -56,15 +50,14 @@ function weibo2wp_auth_response()
 				$weibo->set( $auth_info );
 				
 				$user_info = $weibo->weibo_user_info();
-				
-				if( empty( $user_info ) || empty( $user_info['name'] ) )
+				if( empty( $user_info ) || empty( $user_info['nickname'] ) )
 				{
 					$weibo2wp->add_error( 'Auth failed! can not get user_info!' );
 				}
 				else
 				{
-					$weibo->name = $user_info['name'];
-					$weibo->head = $user_info['head'];
+					$weibo->name = $user_info['nickname'];
+					$weibo->head = $user_info['figureurl'];
 					
 					$weibo->add();
 					$weibo2wp->add_message( 'Auth Successful!' );

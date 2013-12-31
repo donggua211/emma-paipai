@@ -23,9 +23,6 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 		public $client_id = '100571157';
 		public $client_secret = '32f1d83290cda40cd6d9b07500e61c64';
 		
-		/* QQ Connect API 2.1 Class var */
-		public $qc = NULL;
-		
 		/* session Class var */
 		public $session = NULL;
 		
@@ -97,9 +94,6 @@ if ( ! class_exists( 'Weibo2wp' ) ) {
 			
 			/* init session class */
 			$this->session = new Weibo2wp_Session_Handler();
-			
-			/* init QQ connect API 2.1 class */
-			$this->qc = new QC();
 			
 			$this->load_messages();
 		}
