@@ -93,10 +93,11 @@ if ( ! function_exists( 'weibo2wp_settings' ) ) {
 		<?php
 		}
 		
-		$url = $weibo2wp->qc->qq_login();
+		$qc = new QC();
+		$url = $qc->qq_login();
 		?>
 	
-			<form method="post" id="mainform" action="<?php echo $url; ?>" enctype="multipart/form-data">
+			<form method="post" id="mainform" action="<?php echo $url; ?>">
 				<p class="submit">
 						<input name="save" class="button-primary" type="submit" value="<?php _e( 'authorization new weibo', 'weibo2wp' ); ?>" />
 				</p>

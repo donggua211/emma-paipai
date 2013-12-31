@@ -42,7 +42,7 @@ class Oauth{
         $keysArr = array(
             "response_type" => "code",
             "client_id" => $this->appid,
-            "redirect_uri" => $this->callback,
+            "redirect_uri" => urlencode($this->callback),
             "state" => $state,
             "scope" => $this->scope,
         );
@@ -90,15 +90,15 @@ class Oauth{
         $params = array();
         parse_str($response, $params);
 		
-        return $params["access_token"];
+        return $params;
 
     }
 
-    public function get_openid(){
+    public function get_openid($access_token){
 
         //-------请求参数列表
         $keysArr = array(
-            "access_token" => $this->recorder->read("access_token")
+            "access_token" => $access_token
         );
 
         $graph_url = $this->urlUtils->combineURL(self::GET_OPENID_URL, $keysArr);
@@ -116,9 +116,7 @@ class Oauth{
         if(isset($user->error)){
             $this->error->showError($user->error, $user->error_description);
         }
-
-        //------记录openid
-        $this->recorder->write("openid", $user->openid);
+		
         return $user->openid;
 
     }

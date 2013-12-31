@@ -4,16 +4,12 @@ class Weibo2wp_Weibo
 	public $access_token;
 	public $refresh_token;
 	public $expires_in;
-	public $code;
 	public $openid;
-	public $openkey;
 	public $name;
 	public $head;
 	
-	//接口url
-    public $apiUrlHttp = 'http://open.t.qq.com/api/';
-    public $apiUrlHttps = 'https://open.t.qq.com/api/';
-    
+	public $qc;
+	
     //调试模式
     public $debug = false;
 	
@@ -29,8 +25,7 @@ class Weibo2wp_Weibo
 			$weibo['access_token'] = '';
 			$weibo['refresh_token'] = '';
 			$weibo['expires_in'] = '';
-			$weibo['code'] = '';
-			$weibo['openkey'] = '';
+			$weibo['openid'] = '';
 			$weibo['name'] = '';
 			$weibo['head'] = '';
 		}
@@ -38,17 +33,18 @@ class Weibo2wp_Weibo
 		$this->access_token	 = $weibo['access_token'];
 		$this->refresh_token = $weibo['refresh_token'];
 		$this->expires_in	 = $weibo['expires_in'];
-		$this->code			 = $weibo['code'];
-		$this->openkey		 = $weibo['openkey'];
+		$this->openid		 = $weibo['openid'];
 		$this->name			 = $weibo['name'];
 		$this->head			 = $weibo['head'];
 		
 		$this->debug = $weibo2wp->debug;
+		
+		$this->qc = new QC($this->access_token, $openid);
     }
 
 	public function weibo_user_info()
 	{
-		return $this->api('user/info');
+		return $this->qc->get_user_info();
 	}
 	
 	public function weibo_broadcast_timeline($lastid = 0, $pagetime = 0, $pageflag = 0)
@@ -83,9 +79,7 @@ class Weibo2wp_Weibo
 			'access_token'	 => $this->access_token,
 			'refresh_token'	 => $this->refresh_token,
 			'expires_in'	 => $this->expires_in,
-			'code'			 => $this->code,
 			'openid'		 => $this->openid,
-			'openkey'		 => $this->openkey,
 			'name'			 => $this->name,
 			'head'			 => $this->head,
 		);
@@ -244,10 +238,11 @@ class Weibo2wp_Weibo
 		$this->access_token	 = $weibo['access_token'];
 		$this->refresh_token = $weibo['refresh_token'];
 		$this->expires_in	 = $weibo['expires_in'];
-		$this->code			 = $weibo['code'];
-		$this->openkey		 = $weibo['openkey'];
+		$this->openid		 = $weibo['openid'];
 		$this->name			 = $weibo['name'];
 		$this->head			 = $weibo['head'];
+		
+		$this->qc->set_keysArr($weibo['access_token'], $weibo['openid']);
     }
 
     function check_auth_valid()
@@ -385,62 +380,4 @@ class Weibo2wp_Weibo
 		
 		return true;
 	}
-	
-	/**
-     * 发起一个腾讯API请求
-     * @param $command 接口名称 如：t/add
-     * @param $params 接口参数  array('content'=>'test');
-     * @param $method 请求方式 POST|GET
-     * @param $multi 图片信息
-     * @return string
-     */
-    private function api($command, $params = array(), $method = 'GET', $multi = false)
-    {
-		global $weibo2wp;
-		
-		$params['access_token']			 = $this->access_token;
-		$params['oauth_consumer_key']	 = $weibo2wp->client_id;
-		$params['openid']				 = $this->openid;
-		$params['oauth_version']		 = '2.a';
-		$params['clientip']				 = Common::getClientIp();
-		$params['scope']				 = 'all';
-		$params['appfrom']				 = 'php-sdk2.0beta';
-		$params['seqid']				 = time();
-		$params['serverip']				 = $_SERVER['SERVER_ADDR'];
-		$params['format']				 = 'xml';
-
-		$url = $this->apiUrlHttps . trim( $command, '/' );
-        
-		do{
-			$r = $this->request( $url, $params, $method, $multi );
-		}
-		while( !isset( $r['root'] ) || !isset( $r['root']['ret'] ) || $r['root']['ret'] != 0 );
-		
-		$result = $r['root'];
-		
-		//check result
-		if( isset($result['data']) )
-		{
-			return $result['data'];
-		}
-		else
-		{
-			$message = 'Weibo API Error. errcode: ' . $r['root']['errcode'] . '. msg: ' . $r['root']['msg'];
-			$weibo2wp->add_error( $message );
-			
-			return array();
-		}
-    }
-	
-	function request( $url, $params, $method, $multi )
-	{
-		//请求接口
-        $r = Http::request($url, $params, $method, $multi);
-        $r = preg_replace('/[^\x20-\xff]*/', "", $r);
-        $r = iconv("utf-8", "utf-8//ignore", $r);
-		
-		$r = xml_to_array($r);
-		return $r;
-	}
-
 }
