@@ -92,10 +92,8 @@ if ( ! function_exists( 'weibo2wp_settings' ) ) {
 			</table>
 		<?php
 		}
-			
-		$callback = site_url();//回调url
-		$oauth = new OAuth();
-		$url = $oauth->getAuthorizeURL($callback);
+		
+		$url = $weibo2wp->qc->qq_login();
 		?>
 	
 			<form method="post" id="mainform" action="<?php echo $url; ?>" enctype="multipart/form-data">

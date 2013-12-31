@@ -8,7 +8,7 @@
  */
 function weibo2wp_auth_response()
 {
-	if ( !empty($_GET['code']) && !empty($_GET['openid'])  && !empty($_GET['openkey']) )
+	if ( !empty($_GET['code']) && !empty($_GET['state']))
 	{
 		global $weibo2wp;
 		
