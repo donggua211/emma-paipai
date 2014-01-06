@@ -51,6 +51,12 @@ function weibo_motion_2_img( $str )
 		}
 	}
 	
+	//Check for [em]e327775[/em]
+	preg_match_all('/\[em\](.*?)\[\/em\]/i', $str, $emoji_array);
+	foreach($emoji_array[0] as $key => $val) {
+		$str = str_replace($val, '<img src="http://qzonestyle.gtimg.cn/qzone/em/'.$emoji_array[1][$key].'.gif">', $str);
+	}
+	
 	return $str;
 }
 
