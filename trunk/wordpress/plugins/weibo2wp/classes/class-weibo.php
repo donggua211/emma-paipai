@@ -158,7 +158,7 @@ class Weibo2wp_Weibo
 		}
 		while( 0 == $weibo_list['hasnext'] );
 		
-		//Synch Comments
+		/*Synch Comments
 		$post_ids = $this->get_post_ids();
 		if( !empty( $post_ids ) )
 		{
@@ -207,6 +207,7 @@ class Weibo2wp_Weibo
 				
 			}
 		}
+		*/
     }
 	
 	function delete_post()
