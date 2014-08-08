@@ -37,10 +37,10 @@
 			echo '<div class="entry-images">';
 		
 		foreach($image_weibo as $val)
-			echo '<a href="' . $val . '/2000" rel="prettyPhoto'.get_the_ID().'[pp_gal]" > <img src="' . $val . '/160" /></a>';
+			echo '<a href="'.$val.'/2000" rel="prettyPhoto[gallery'.get_the_ID().']" > <img src="'.$val.'/160" alt="" /></a>';
 		
 		foreach($image_image as $val)
-			echo '<a href="' . $val . '" rel="prettyPhoto'.get_the_ID().'[pp_gal]" > <img src="' . $val . '" /></a>';
+			echo '<a href="'.$val.'" rel="prettyPhoto[gallery'.get_the_ID().']" > <img src="'.$val.'" alt="" /></a>';
 		
 		if( !empty( $image_weibo ) || !empty( $image_image ) )
 			echo '</div><!-- .entry-images -->';
