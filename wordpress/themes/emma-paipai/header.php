@@ -19,6 +19,9 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
+<meta name="google-site-verification" content="Cnk2g9K01DzILSE_9edbStRT7Ib0DCkvZPQEyHaeceo" />
+<meta property="qc:admins" content="52512636776555150110116375" />
+<meta name="baidu_union_verify" content="d019a480f5a3cae2375d7b814c53be9f">
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php wp_title( '|', true, 'right' ); ?></title>
