@@ -49,8 +49,7 @@ body .hide {
 
 /* Body, links, basics */
 body {
-	font-size: 12px;
-	font-family: Tahoma, Helvetica, Arial, "MS PGothic","Osaka",sans-serif;
+	font:12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
 	color: #333;
 }
 a {
@@ -103,7 +102,7 @@ select, input[type="radio"], input[type="checkbox"]  {
 	display: inline-block;
 }
 .top-nav a {color:#666}
-.top-nav a:hover{color:#f00;text-decoration:underline}
+.top-nav a:hover{color:#f00;text-decoration:none}
 
 /* Header */
 .header {
@@ -308,25 +307,11 @@ select, input[type="radio"], input[type="checkbox"]  {
 	*zoom: 1;
 	padding-left: 20px;
 	padding-right: 2px;
-}
-.menu-box ul li.selected span, .menu-box ul li.selected span a {
-	background-color: #f27b04;
-	color: #FFF;
-	font-weight: 700;
-	background-position: 0 -150px;
-}
-.menu-box ul li.selected a, .menu-box ul li ul li.selected a {
-	color: #FFF;
-	background-color: #f27b04;
-	background-position: 0 -150px;
+	text-decoration: none;
 }
 .menu-box ul li span a:hover {
-	background-color: #fff8d1;
+	background-color: #fef4be;
 	
-}
-.menu-box ul li.selected span a:hover {
-	background-color: #f27b04;
-	background-position: 0 -150px;
 }
 .menu-box ul li.open {
 	display: block;
@@ -2427,17 +2412,18 @@ section[role="banner"] {
 	margin-right: auto;
 	padding: 10px 20px 50px 20px;
 	background-color: #fff;
+	border-top: 2px solid #f40;
 }
 .footer a, .footer b {
 	float: left;
 	margin: 0 4px;
 }
 .footer a  {
-	color: #3e3e3e;
+	color: #6c6c6c;
 }
-.footer a :hover {
-	color: #F60;
-	text-decoration: underline;
+.footer a:hover {
+	color: #f40;
+	text-decoration: none;
 }
 .footer b {
 	color: #d3d3d3;

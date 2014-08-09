@@ -73,7 +73,7 @@ body{ background: none!important;font-size:12px; }
 
 
 /* layout */
-body{ font-size:12px; font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif;}
+body{font-size: 12px; font-family: Tahoma,'Microsoft YaHei';}
 a{text-decoration: none; color: #0066CC}
 a:hover{ text-decoration: underline}
 .inner{width:940px;margin:auto}
