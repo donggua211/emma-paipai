@@ -1,0 +1,110 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Aug 08, 2014 at 08:31 PM
+-- Server version: 5.5.20
+-- PHP Version: 5.3.10
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `max`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `max_admin_users`
+--
+
+DROP TABLE IF EXISTS `max_admin_users`;
+CREATE TABLE IF NOT EXISTS `max_admin_users` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(64) NOT NULL,
+  `password` char(32) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `add_time` datetime NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `max_admin_users`
+--
+
+INSERT INTO `max_admin_users` (`admin_id`, `user_name`, `password`, `email`, `add_time`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'kzhao@pacrimlink.net', '2014-08-05 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `max_categories`
+--
+
+DROP TABLE IF EXISTS `max_categories`;
+CREATE TABLE IF NOT EXISTS `max_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` text NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `add_time` datetime NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `max_orders`
+--
+
+DROP TABLE IF EXISTS `max_orders`;
+CREATE TABLE IF NOT EXISTS `max_orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `trans_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `add_time` datetime NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `max_products`
+--
+
+DROP TABLE IF EXISTS `max_products`;
+CREATE TABLE IF NOT EXISTS `max_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `add_time` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `max_users`
+--
+
+DROP TABLE IF EXISTS `max_users`;
+CREATE TABLE IF NOT EXISTS `max_users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) NOT NULL,
+  `password` char(32) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `add_time` datetime NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `max_users`
+--
+
+INSERT INTO `max_users` (`user_id`, `user_name`, `password`, `email`, `add_time`) VALUES
+(1, 'donggua211', '8695ae8db3269ab2cf9f3aa31e972c7c', 'donggua211@qq.com', '2014-08-07 00:00:00'),
+(2, 'donggua211', '8695ae8db3269ab2cf9f3aa31e972c7c', 'donggua211@qq.com1', '2014-08-07 17:21:18');
