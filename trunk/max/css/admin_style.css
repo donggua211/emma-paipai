@@ -218,6 +218,7 @@ select, input[type="radio"], input[type="checkbox"]  {
 	margin: 0 auto;
 }
 .main-wrap {
+	margin-top: 10px;
 	position: relative;
 	clear: both;
 }
@@ -227,6 +228,7 @@ select, input[type="radio"], input[type="checkbox"]  {
 .main-content {
 	clear:both;
 	padding: 10px;
+	border: 1px solid #dfdfdf;
 }
 .block-content {
 	clear:both;
@@ -334,7 +336,7 @@ select, input[type="radio"], input[type="checkbox"]  {
     color: #404040;
 }
 .breadcrumbs a {
-    background: url(../image/crumb_bg.png) no-repeat scroll 100% 50% transparent;
+    background: url(../image/crumb_bg.gif) no-repeat scroll 100% 50% transparent;
     margin-right: 5px;
     padding-right: 10px;
 }
@@ -355,7 +357,9 @@ h2.title {
 	font-size: 14px;
 	text-indent: 12px;
 	border-left: #7bcb4e 5px solid;
-	border-bottom: #7bcb4e 1px solid;
+	border-bottom: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+	border-top: 1px solid #dfdfdf;
 }
 h2.sub-title {
 	margin: 10px 0;
@@ -1206,7 +1210,6 @@ a:hover.triangle-button{
 	margin: 10px 0;
 }
 .detail-list table {
-	font-size: 10px;
 	width: 100%;
 }
 .detail-list table * {
@@ -1225,6 +1228,9 @@ a:hover.triangle-button{
 .detail-list td, .detail-list th {
 	padding: 3px;
 	border: 1px solid #D3DBE0;
+}
+.detail-list td.operation {
+	width: 100px;
 }
 .detail-list .disable{
 	background-color: #EEE;
@@ -1295,6 +1301,7 @@ a:hover.triangle-button{
 	margin-right: 10px;
 }
 .edit-form ul li label, .edit-form .bg span{
+	font-weight: 700;
 	background-color: #E6EFF4;
 }
 .edit-form ul li .second_radio{
@@ -2344,7 +2351,7 @@ span.big {
     clear: both;
 }
 .msg-full {
-	margin: 0 0 10px 0;
+	margin: 10px 0 10px 0;
 }
 .msg-full .error, .msg-full .tips, .msg-full .ok , .msg-full .alert, .msg-full .attention {
 	float: none;

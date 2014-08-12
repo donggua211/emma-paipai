@@ -16,6 +16,25 @@ function get_admin_site_nav() {
 /*
   Template Functions.
 */
+function show_result_page($message, $back_url = '', $extra_html = '') {
+	if(empty($back_url)) {
+		if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+			$back_url = $_SERVER['HTTP_REFERER'];
+		} else {
+			$back_url = site_url('admin');
+		}
+	} else {
+		$back_url = site_url($back_url);
+	}
+	
+	$CI =& get_instance();
+	
+	$data['message'] = $message;
+	$data['back_url'] = $back_url;
+	$data['extra_html'] = $extra_html;
+	$CI->load->admin_template('parts/show_result', $data);
+}
+
 function template_nav_menu() {
 	$site_nav = get_admin_site_nav();
 	if(empty($site_nav)) {
@@ -38,8 +57,15 @@ function template_nav_menu() {
 				
 				echo '<li';
 				
-				if(get_current_uri() == $sub_val['uri'] || (isset($sub_val['alias']) && in_array(get_current_uri(), $sub_val['alias']))) {
+				if(get_current_uri() == $sub_val['uri']) {
 					echo ' class="open"';
+				} elseif(isset($sub_val['sub'])) {
+					foreach($sub_val['sub'] as $sub_sub_val) {
+						if(get_current_uri() == $sub_sub_val['uri']) {
+							echo ' class="open"';
+							break;
+						}
+					}
 				}
 				
 				echo '><span>';
@@ -61,9 +87,6 @@ function template_nav_menu() {
 	return true;
 }
 
-/*
- * Output page title
- */
 function template_page_title($page_title = '', $seperator = ' | ' ) {
 	$site_name = 'Max美国代购管理';
 	
@@ -82,6 +105,15 @@ function template_page_title($page_title = '', $seperator = ' | ' ) {
 						if(get_current_uri() == $sub_val['uri']) {
 							$page_title = array($sub_val['title'], $top_level['title']);
 							break 2;
+						}
+						
+						if(isset($sub_val['sub'])) {
+							foreach($sub_val['sub'] as $sub_sub_val) {
+								if(get_current_uri() == $sub_sub_val['uri']) {
+									$page_title = array($sub_sub_val['title'], $sub_val['title'], $top_level['title']);
+									break 3;
+								}
+							}
 						}
 					}
 				}
@@ -111,9 +143,6 @@ function template_page_title($page_title = '', $seperator = ' | ' ) {
 	return true;
 }
 
-/*
- * Output site Nav menu
- */
 function template_breadcrumbs() {
 	$site_nav = get_admin_site_nav();
 	if(empty($site_nav)) {
@@ -139,6 +168,25 @@ function template_breadcrumbs() {
 					);
 					
 					break 2;
+				}
+				
+				if(isset($sub_val['sub'])) {
+					foreach($sub_val['sub'] as $sub_sub_val) {
+						if(get_current_uri() == $sub_sub_val['uri']) {
+							$breadcrumbs[] = array(
+								'title' => $top_level['title'],
+								'uri' => $top_level['uri'],
+							);
+							$breadcrumbs[] = array(
+								'title' => $sub_val['title'],
+								'uri' => $sub_val['uri'],
+							);
+							$breadcrumbs[] = array(
+								'title' => $sub_sub_val['title'],
+							);
+							break 3;
+						}
+					}
 				}
 			}
 		}

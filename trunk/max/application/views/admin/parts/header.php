@@ -80,5 +80,5 @@
 			</div>
 			<?php endif;?>
 			
-			<div class="main-wrap clearfix main-home-bg">
+			<div class="main-wrap clearfix">
 <?php endif; ?>
