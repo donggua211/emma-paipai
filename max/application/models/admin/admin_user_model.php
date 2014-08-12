@@ -2,11 +2,11 @@
 
 class Admin_user_model extends CI_Model {
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct();
 	}
 	
-	function check_login($user_name, $password) {
+	public function check_login($user_name, $password) {
 		$sql = "SELECT admin_id, password FROM {$this->db->dbprefix('admin_users')}
 				WHERE user_name  = '$user_name'
 				LIMIT 1 ";

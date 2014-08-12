@@ -2,22 +2,26 @@
 
 class Admin_User extends Admin_Controller {
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct();
 		
 		$this->load->model('admin/admin_user_model');
 	}
 	
-	function login() {
+	public function index() {
+		redirect('admin/admin_user/login');
+	}
+	
+	public function login() {
 		if($this->_admin_check_login()) {
-			redirect("admin");
+			redirect('admin');
 		}
 		
-		$data['uri'] = $this->input->get_post("uri");
+		$data['uri'] = $this->input->get_post('uri');
 		
 		if(isset($_POST['submit']) && !empty($_POST['submit'])) {
-			$data['user_name'] = $this->input->post("user_name");
-			$data['password'] = $this->input->post("password");
+			$data['user_name'] = $this->input->post('user_name');
+			$data['password'] = $this->input->post('password');
 			
 			if(empty($data['user_name'])) {
 				$data['message']['error'] = '用户名不能为空!';
@@ -44,10 +48,10 @@ class Admin_User extends Admin_Controller {
 		
 		$data['page_title'] = '管理员登陆';
 		$data['header_silent'] = true;
-		$this->load->admin_template('login', $data);
+		$this->load->admin_template('admin_user/login', $data);
 	}
 	
-	function logout() {
+	public function logout() {
 		$this->session->sess_destroy();
 		redirect('admin/admin_user/login');
 	}

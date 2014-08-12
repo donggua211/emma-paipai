@@ -19,4 +19,11 @@ $(function() {
 			$( this ).next().toggleClass( "hide" );
 		}
 	});
+	
+	$( "input[name='remove']" ).click(function() {
+		return confirm("确定删除？");
+	});
+	$( ".remove" ).click(function() {
+		return confirm("确定删除？");
+	});
 });
